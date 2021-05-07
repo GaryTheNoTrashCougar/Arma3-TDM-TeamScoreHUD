@@ -1,0 +1,15 @@
+class CfgFunctions
+{
+  class TDM
+	{
+		class FactionDetection
+		{
+			class SideFactions {file = "TDM_fnc_SideFactions.sqf";};
+		};
+	};
+};
+
+class RscTitles
+{
+	#include "Score_Bar\Score_Bar_HPP.hpp"
+};
