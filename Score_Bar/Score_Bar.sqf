@@ -80,7 +80,7 @@ parseText format
 	["
 <t shadow='1' shadowColor='#000000' color='%3'>%2&#160;&#160;<img size='1.5' 	image='%4' />				</t>
 <t shadow='1' shadowColor='#000000' color='%3'><img size='1.5' 	image='Score_Bar\images\icon_Player_CA.paa' />				</t>
-<t shadow='1' shadowColor='#000000' color='%3'>%1&#160;&#160;<img size='1.5' 	image='%5' />				</t>
+<img size='1.5' 	image='%5' /><t shadow='1' shadowColor='#000000' color='%3'> 	%1&#160;&#160;				</t>
 </t>",
 		friendlyDeaths,
 		enemyDeaths,
