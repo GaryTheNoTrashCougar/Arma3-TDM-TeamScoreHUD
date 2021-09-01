@@ -7,25 +7,38 @@ friendlyDeaths = 0;
 enemyDeaths = 0;
 enemySide = [];
 
-"friendlyKilled" addPublicVariableEventHandler
+addMissionEventHandler ["EntityKilled",
 {
-	friendlyDeaths = friendlyDeaths + 1;
+	params ["_killed", "_killer"];
+	
+	if (isNull _instigator) then {_instigator = _killer};
+	
+	if ((side group _killed) != (side group _killer) && {((side group _killed) != playerSide)})
+	then
+	{
+		enemyDeaths = enemyDeaths + 1;
+	};
+	
+	if ((side group _killed) != (side group _killer) && {((side group _killed) == playerSide)})
+	then
+	{
+		friendlyDeaths = friendlyDeaths + 1;
+	};
+	
 	if (friendlyDeaths == killLimit) then
 	{
-		"SideLost" call BIS_fnc_endMissionServer;
+		playMusic "EventTrack02_F_Curator";
+		["LOOSER", false, true, false, true] remoteExec ["BIS_fnc_endMission"];
 		{_x allowDamage false;} forEach allUnits;
 	};
-};
 
-"enemyKilled" addPublicVariableEventHandler
-{
-	enemyDeaths = enemyDeaths + 1;
 	if (enemyDeaths == killLimit) then
 	{
-		"SideWon" call BIS_fnc_endMissionServer;
+		playMusic "EventTrack03_F_Curator";
+		["WINNER", true, true, false, true] remoteExec ["BIS_fnc_endMission"];
 		{_x allowDamage false;} forEach allUnits;
 	};
-};
+}];
 
 waitUntil {!(isNull (findDisplay 46))};
 disableSerialization;
