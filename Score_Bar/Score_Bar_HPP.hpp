@@ -7,19 +7,19 @@ class RscScoreBar
 	fadeout = 0;
 	movingEnable = 0;
 	objects[] = {};
-
+	
 	class controls
 	{
 		class scoreBarText
 		{
 			idc = 55559;
-			x = safezoneX + safezoneW - 1.875;	//1.50 	left  	 1.20 	right	1.90 for 1920 ,	1.38 for 1024
-			y = safezoneY + safezoneH - 1.72;	//70 	down 	 75 	up		0.070
-			w = 1.38;
-			h = 0.08;
+			x = 0.016 * safezoneW + safezoneX;
+			y = 0.06 * safezoneH + safezoneY;
+			w = 1 * safezoneW;
+			h = 1 * safezoneH;
 			shadow = 1;
 			font = "EtelkaMonospaceProBold";
-			size = 0.040;
+			size = "0.022 * safezoneH";
 			type = 13;
 			style = 2;
 			text = "";
