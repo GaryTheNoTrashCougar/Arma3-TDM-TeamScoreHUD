@@ -22,15 +22,19 @@ addMissionEventHandler ["EntityKilled",
 	params ["_killed", "_killer"];
 	
 	if (isNull _instigator) then {_instigator = _killer};
-	if ((side group _killed) != (side group _killer) && {((side group _killed) != playerSide)})
+	if (_killed isKindOf "CAManBase")
 	then
 	{
-		enemyDeaths = enemyDeaths + 1;
-	};
-	if ((side group _killed) != (side group _killer) && {((side group _killed) == playerSide)})
-	then
-	{
-		friendlyDeaths = friendlyDeaths + 1;
+		if ((side group _killed) != (side group _killer) && {((side group _killed) != playerSide)})
+		then
+		{
+			enemyDeaths = enemyDeaths + 1;
+		};
+		if ((side group _killed) != (side group _killer) && {((side group _killed) == playerSide)})
+		then
+		{
+			friendlyDeaths = friendlyDeaths + 1;
+		};
 	};
 	if (friendlyDeaths == killLimit && {enemyDeaths < killLimit}) then
 	{
