@@ -40,7 +40,7 @@ missionTime =
 	};
 };
 
-[timeLimit] spawn missionTime;
+timeScript = [timeLimit] spawn missionTime;
 
 addMissionEventHandler ["EntityKilled",
 {
@@ -66,12 +66,14 @@ addMissionEventHandler ["EntityKilled",
 		playMusic "EndLose";
 		["LOSE", false, true, false, false] remoteExec ["BIS_fnc_endMission"];
 		{_x allowDamage false;} forEach allUnits;
+		terminate timeScript;
 	};
 	if (enemyDeaths == killLimit && {friendlyDeaths < killLimit}) then
 	{
 		playMusic "EndWin";
 		["WIN", true, true, false, false] remoteExec ["BIS_fnc_endMission"];
 		{_x allowDamage false;} forEach allUnits;
+		terminate timeScript;
 	};
 	if (friendlyDeaths == killLimit && enemyDeaths == killLimit)
 	then
@@ -79,6 +81,7 @@ addMissionEventHandler ["EntityKilled",
 		playMusic "EndDraw";
 		["TIE", false, true, false, false] remoteExec ["BIS_fnc_endMission"];
 		{_x allowDamage false;} forEach allUnits;
+		terminate timeScript;
 	};
 }];
 
