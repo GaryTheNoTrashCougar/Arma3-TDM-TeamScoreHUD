@@ -21,42 +21,42 @@ class CfgDebriefing
 		title = "Victory";
 		subtitle = "Your team won!";
 		description = "Score limit reached!";
-		picture = "flag_AAF";
+		picture = "Score_Bar\images\win_ca.paa";
 	};
 	class LOSE
 	{
 		title = "Defeat";
 		subtitle = "Your team lost!";
 		description = "Score limit reached!";
-		picture = "flag_AAF";
+		picture = "Score_Bar\images\lose_ca.paa";
 	};
 	class TIE
 	{
 		title = "Draw";
 		subtitle = "It's a draw!";
 		description = "Return to base!";
-		picture = "flag_AAF";
+		picture = "Score_Bar\images\draw_ca.paa";
 	};
 	class WINTIME
 	{
 		title = "Victory";
 		subtitle = "Your team won!";
 		description = "Time limit reached!";
-		picture = "flag_AAF";
+		picture = "Score_Bar\images\time_ca.paa";
 	};
 	class LOSETIME
 	{
 		title = "Defeat";
 		subtitle = "Your team lost!";
 		description = "Time limit reached!";
-		picture = "flag_AAF";
+		picture = "Score_Bar\images\time_ca.paa";
 	};
 	class TIETIME
 	{
 		title = "Draw";
 		subtitle = "It's a draw!";
 		description = "Time limit reached!";
-		picture = "flag_AAF";
+		picture = "Score_Bar\images\time_ca.paa";
 	};
 };
 
@@ -65,19 +65,19 @@ class CfgMusic
 	class EndWin
 	{
 		name = "EndWin";
-		sound[] = {"\music\EndWin.ogg", db+10, 1.0};
+		sound[] = {"Score_Bar\music\EndWin.ogg", db+10, 1.0};
 		duration = 14.16;
 	};
 	class EndLose
 	{
 		name = "EndLose";
-		sound[] = {"\music\EndLose.ogg", db+10, 1.0};
+		sound[] = {"Score_Bar\music\EndLose.ogg", db+10, 1.0};
 		duration = 13.84;
 	};
 	class EndDraw
 	{
 		name = "EndDraw";
-		sound[] = {"\music\EndDraw.ogg", db+10, 1.0};
+		sound[] = {"Score_Bar\music\EndDraw.ogg", db+10, 1.0};
 		duration = 16;
 	};
 };
