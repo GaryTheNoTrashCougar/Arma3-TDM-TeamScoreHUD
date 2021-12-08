@@ -9,6 +9,31 @@ missionTime =
 
 	while {countdown > 0} do
 	{
+		if (countdown isEqualTo 1)
+		then
+		{
+			if (friendlyDeaths > enemyDeaths)
+			then
+			{
+				playMusic "EndLose";
+				["LOSETIME", false, true, false, false] remoteExec ["BIS_fnc_endMission"];
+				{_x allowDamage false;} forEach allUnits;
+			};
+			if (friendlyDeaths < enemyDeaths)
+			then
+			{
+				playMusic "EndWin";
+				["WINTIME", true, true, false, false] remoteExec ["BIS_fnc_endMission"];
+				{_x allowDamage false;} forEach allUnits;
+			};
+			if (friendlyDeaths == enemyDeaths)
+			then
+			{
+				playMusic "EndDraw";
+				["TIETIME", false, true, false, false] remoteExec ["BIS_fnc_endMission"];
+				{_x allowDamage false;} forEach allUnits;
+			};
+		};
 		countdown = countdown - 1;  
 		timeLeft = format ["%1", [countdown,"MM:SS"] call BIS_fnc_secondsToString];	
 		sleep 1;
@@ -67,28 +92,6 @@ addMissionEventHandler ["EntityKilled",
 	((uiNamespace getVariable "RscGameTitle") displayCtrl 55557) ctrlSetStructuredText parseText format ["<img align='center' shadow='0' size='2' image='%1'/>", _friendlyFlag];
 	((uiNamespace getVariable "RscGameTitle") displayCtrl 55556) ctrlSetStructuredText parseText format ["<t align='center' shadow='2' shadowColor='#000000' color='#FBFCFE'>%1</t>", gameTitle];
 	((uiNamespace getVariable "RscGameTitle") displayCtrl 55555) ctrlSetStructuredText parseText format ["<t align='center' shadow='2' shadowColor='#000000' color='#FBFCFE'>%1</t>", gameDescription];
-	waitUntil {time > (timeLimit - 1)};
-	if (friendlyDeaths > enemyDeaths)
-	then
-	{
-		playMusic "EndLose";
-		["LOSETIME", false, true, false, false] remoteExec ["BIS_fnc_endMission"];
-		{_x allowDamage false;} forEach allUnits;
-	};
-	if (friendlyDeaths < enemyDeaths)
-	then
-	{
-		playMusic "EndWin";
-		["WINTIME", true, true, false, false] remoteExec ["BIS_fnc_endMission"];
-		{_x allowDamage false;} forEach allUnits;
-	};
-	if (friendlyDeaths == enemyDeaths)
-	then
-	{
-		playMusic "EndDraw";
-		["TIETIME", false, true, false, false] remoteExec ["BIS_fnc_endMission"];
-		{_x allowDamage false;} forEach allUnits;
-	};
 };
 
 waitUntil {!(isNull (findDisplay 46))};
