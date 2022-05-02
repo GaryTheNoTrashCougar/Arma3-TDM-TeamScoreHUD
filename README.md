@@ -1,6 +1,6 @@
 # Arma3-TDM-TeamScoreHUD
-Displays the score for each team &amp; ends the game when the user defined score limit or time limit is reached.<br/>
-Includes a customizable game message HUD (title & description) displayed on initial spawn.<br/>
+- Displays the score for each team &amp; ends the game when the user defined score limit or time limit is reached.
+- Includes a customizable game message HUD (title & description) displayed on initial spawn.
 This has been tested using AI on both player hosted server & dedicated server but should work against players.
 
 ![Screenshot](https://github.com/GaryTheNoTrashCougar/Arma3-TDM-TeamScoreHUD/blob/main/ScoreBar.png?raw=true)
